@@ -64,6 +64,8 @@ Pada tab **Code** -> klik pada bagian **About** (Simbol *Gear*) -> **Website** (
 
 > [!NOTE] 
 > Pertama kali push workflow tidak akan ter-*trigger*, anda perlu push lagi untuk mentrigger workflow.
+> Buka InfinityFree -> [Your Hosting] -> FileManager (Hapus file htdocs/.htaccess).
+> 
 
 Lihat file `.github\workflow\deploy.yml`. Pada dasarnya file ini adalah konfigurasi untuk fitur Github action yang digunakan untuk melakukan proses ketika suatu event terjadi/ter-trigger. 
 - Apa *trigger event* nya? Ketika ada push ke branch `main`. 
@@ -121,6 +123,6 @@ Kali ini kita akan belajar menggunakan AI dalam web development, terutama untuk 
     - CSS terintegrasi dalam 1 file `index.css`
     - Rapikan repo, hapus file atau kode yang tidak digunakan.
 - Nilai Personel: 
-    - Kemiripan UI dengan referensi Asli.
+    - Kemiripan UI dengan referensi Asli. 
     - Struktur UI yang lebih kompleks dibanding anggota lain.
     - Terdapat State khusus yang lebih kompleks dibanding anggota lain.

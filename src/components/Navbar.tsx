@@ -11,28 +11,25 @@ const Navbar = () => {
     { name: 'Page4', path: '/page-4' },
     { name: 'Page5', path: '/page-5' },
     { name: 'Page6', path: '/page-6' },
+    { name: 'PageExample', path: '/page-example' },
   ];
 
   // Fungsi pembantu untuk menutup menu mobile
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="bg-white shadow-md w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="shrink-0">
-            <Link to="/" className="text-2xl font-bold text-blue-600">
-              PPWL12-FE-CLONE
-            </Link>
-          </div>
+    <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-200 pointer-events-none">
+      <div className="pointer-events-auto">
+
+        <div className="flex items-center justify-center gap-6 mt-1">
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-gray-700 hover:text-blue-600 font-medium transition duration-300"
+                className="text-white bg-gray-800 hover:text-blue-400 text-xs font-medium transition duration-300"
               >
                 {link.name}
               </Link>
@@ -41,7 +38,10 @@ const Navbar = () => {
 
           {/* Burger Button */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 p-2">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white p-2"
+            >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -51,23 +51,25 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
+
         </div>
       </div>
 
       {/* Mobile Dropdown */}
-      <div className={`md:hidden bg-white border-t transition-all duration-300 ${isOpen ? 'max-h-64' : 'max-h-0 overflow-hidden'}`}>
-        <div className="px-4 pt-2 pb-4 space-y-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              onClick={closeMenu} // Menutup menu setelah klik
-              className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-blue-50 rounded-md"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+      <div
+        className={`md:hidden mt-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg transition-all duration-300 overflow-hidden pointer-events-auto ${isOpen ? "max-h-64 p-2" : "max-h-0"
+          }`}
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            to={link.path}
+            onClick={closeMenu}
+            className="block px-4 py-2 text-gray-800 hover:bg-blue-100 rounded-md"
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
     </nav>
   );
