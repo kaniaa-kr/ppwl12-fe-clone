@@ -74,14 +74,17 @@ Lihat file `.github\workflow\deploy.yml`. Pada dasarnya file ini adalah konfigur
     3. Terakhir, *uses* template koneksi FPT `SamKirkland/FTP-Deploy-Action@v4.3.4`, dengan parameter untuk koneksi dan target path. 
 **Betul!** File ini konsepnya hampir mirip dengan Dockerfile. 
 
-**Proteksi branch main**
-- Masuk ke: `Repo → Settings → Branches → Add rule`
-- Isi: Branch name pattern `main`
-- Aktifkan:
+### 2.2. Ruleset: Proteksi branch main
+- Masuk ke: `Repo → Settings → Rules/Rulesets → New branch ruleset` (name: `Protect branch main`)
+- Bypass list: `Repository Admin`
+- Target Branch: `Default` (main) 
+- Branch rules:
+    - ✅ Restrict updates (Hanya user dengan bypass permission (admin) yang bisa)
     - ✅ Require a pull request before merging
-    - ✅ Require approvals (set 1 atau lebih)
-    - ✅ Restrict who can push to matching branches
-    - Tambahkan hanya username anda (owner)
+        - ✅ Require approvals: `1` (PR tidak bisa di-merge tanpa review)
+        - ✅ Require approval of the most recent reviewable push (Orang yang push commit tidak bisa approve PR sendiri, hanya admin yang bisa approve)
+    - ✅ Block force pushes (gk bisa push --force, harus merge dulu)
+- klik `Create`
 
 Efeknya:
 - ❌ collaborator tidak bisa push langsung ke main
