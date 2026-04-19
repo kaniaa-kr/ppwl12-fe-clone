@@ -22,7 +22,7 @@ jobs:
       - name: Build project (Vite)
         run: bun run build
       
-      - name: Check dist exists
+      - name: Check dist exists (ubuntu script)
         run: test -d dist
 
       - name: Upload to InfinityFree via FTP
