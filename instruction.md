@@ -120,13 +120,13 @@ bun dev
 ## Tampilan sudah diberi navbar untuk berpindah halaman. Ini agar asdos dapat navigasi halaman dan mudah dalam penilaian. 
 ## Sudah disediakan template Page1.tsx - Page2.tsx, isi sesuai hasil clone anda. 
 ```
-Lihat di Navigasi web pada `PageExample` ([referensi](https://universe.leagueoflegends.com/en_US/)), itu  salah satu contoh halaman. Anda dapat menghapus nya dan contoh dependensinya di `components/`, `lib/`, dan kode di `index.css` 
+Lihat di Navigasi web pada `PageExample` ([referensi](https://universe.leagueoflegends.com/en_US/)), itu  salah satu contoh halaman. Anda dapat menghapus nya dan  dependensinya di `components/`, `lib/`, dan kode style nya di `index.css`. 
 
 Kita akan menggunakan AI dalam web development, terutama untuk generate template dasar.
 - Masuk ke https://www.insidersedge.io/ (berisi informasi berbagai web tool AI yang dapat anda coba)
 - Cari "same" (tool AI untuk clone website).
-- Clone url dari url website yang ditugaskan yang sudah di pilih (hanya perlu buat 1 halaman static dengan berbagai UI State (Hover, Scroll, dsb.)).
-	- ketika anda generate, akan ada opsi generate, pilih "generate semua".
+- Clone url dari url website yang ditugaskan.
+	- ketika anda generate, akan ada opsi generate, pilih "Clone All" untuk clone 1 halaman full.
 	- Kode akan dibangun pakai next.js, jadi anda perlu ganti elemen next.js jadi pakai React biasa.
 	- Anda perlu salin kode manual 1 per satu ke local (karena "download sekaligus" masih dalam fitur pro).
 > Liat [video tips cloing web](https://drive.google.com/file/d/1OH6GrTbvOacRhNob79uRn1jD7QF2o-In/view?usp=drive_link) ini sebagai referensi dalam cloning website nya.
@@ -140,5 +140,4 @@ Kita akan menggunakan AI dalam web development, terutama untuk generate template
     - Terdapat sharing components. Jika ada, kumpulkan dalam dir `components/`.
     - CSS terintegrasi dalam 1 file `index.css`
     - Rapikan repo, hapus file atau kode yang tidak digunakan.
-- Nilai Personel: 
-    - Perbaikan UI dari komponenen yang rusak. Terutama jika struktur UI yang lebih kompleks dibanding anggota lain (Cth: terdapat State khusus yang lebih kompleks dibanding anggota lain).
+- Nilai Personel: Perbaikan UI dari komponenen yang rusak. Terutama jika struktur UI yang lebih kompleks dibanding anggota lain (Cth: terdapat State khusus yang lebih kompleks dibanding anggota lain).
