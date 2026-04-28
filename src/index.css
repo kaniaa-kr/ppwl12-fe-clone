@@ -153,6 +153,17 @@ body {
   flex-shrink: 0;
 }
 
+.money-heist-hero {
+  background-image:
+    linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.65) 35%, rgba(0, 0, 0, 0.15) 100%),
+    linear-gradient(to top, #141414 0%, transparent 35%),
+    url("/images/money-heist-korea.jpg"); /* ✅ sesuai folder kamu */
+  
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
 /* ── Hero / Video ─────────────────────────────────────────────────────────── */
 .netflix-home-video {
   position: relative;
