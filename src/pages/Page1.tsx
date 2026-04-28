@@ -27,7 +27,7 @@ interface SliderSection {
             </div>
           </div>
         </section>
-        
+
 const TRENDING_MOVIES: Movie[] = [
   { id: 1, image: "./images/trending/img6.jpeg",  match: 97, type: "Limited Series", genres: "Provocative • Psychological • Thriller", isHD: true },
   { id: 2, image: "./images/trending/img2.jpeg",  match: 95, type: "Movie",           genres: "Action • Adventure • Drama",            isHD: true },
@@ -253,13 +253,18 @@ function Navbar() {
 
 function Hero() {
   return (
-    <div className="netflix-home-video">
+    <section className="netflix-home-video money-heist-hero">
       <div className="top" />
       <div className="bottom" />
-      <video src="./video/video.mp4" autoPlay muted loop />
+
       <div className="content">
         <section className="left">
-          <img src="./images/image2.webp" alt="Featured title" />
+          <h1 className="money-title">
+            MONEY <span>HEIST</span>
+          </h1>
+
+          <p className="money-subtitle">PART 4</p>
+
           <div className="hero-buttons">
             <button className="btn-play">
               <IconPlay /> Play
@@ -270,7 +275,7 @@ function Hero() {
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 }
 
