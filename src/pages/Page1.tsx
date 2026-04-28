@@ -27,6 +27,7 @@ interface SliderSection {
             </div>
           </div>
         </section>
+        
 const TRENDING_MOVIES: Movie[] = [
   { id: 1, image: "./images/trending/img6.jpeg",  match: 97, type: "Limited Series", genres: "Provocative • Psychological • Thriller", isHD: true },
   { id: 2, image: "./images/trending/img2.jpeg",  match: 95, type: "Movie",           genres: "Action • Adventure • Drama",            isHD: true },
