@@ -155,10 +155,10 @@ body {
 
 .money-heist-hero {
   background-image:
-    linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.65) 35%, rgba(0, 0, 0, 0.15) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 35%, transparent 100%),
     linear-gradient(to top, #141414 0%, transparent 35%),
-    url("/images/money-heist-korea.jpg"); /* ✅ sesuai folder kamu */
-  
+    url("/images/money-heist-korea.jpg"); 
+
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
