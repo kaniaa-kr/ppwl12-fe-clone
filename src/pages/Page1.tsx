@@ -253,17 +253,19 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section className="netflix-home-video money-heist-hero">
-      <div className="top" />
-      <div className="bottom" />
+    <section className="netflix-home-video">
+      <img
+        src="/images/money-heist-korea.jpg"
+        alt="Money Heist Korea"
+        className="hero-bg-image"
+      />
+
+      <div className="hero-overlay" />
 
       <div className="content">
         <section className="left">
-          <h1 className="money-title">
-            MONEY <span>HEIST</span>
-          </h1>
-
-          <p className="money-subtitle">PART 4</p>
+          <h1 className="hero-title">MONEY HEIST</h1>
+          <p className="hero-subtitle">PART 4</p>
 
           <div className="hero-buttons">
             <button className="btn-play">

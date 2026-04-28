@@ -153,17 +153,6 @@ body {
   flex-shrink: 0;
 }
 
-.money-heist-hero {
-  background-image:
-    linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 35%, transparent 100%),
-    linear-gradient(to top, #141414 0%, transparent 35%),
-    url("/images/money-heist-korea.jpg"); 
-
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
-
 /* ── Hero / Video ─────────────────────────────────────────────────────────── */
 .netflix-home-video {
   position: relative;
@@ -174,48 +163,46 @@ body {
   background: #000;
 }
 
-.netflix-home-video .top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
-  z-index: 2;
-}
-
-.netflix-home-video .bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to top, #141414 0%, transparent 100%);
-  z-index: 2;
-}
-
-.netflix-home-video video {
+.hero-bg-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.75;
+  object-position: center top;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, transparent 100%),
+    linear-gradient(to top, #141414 0%, transparent 35%);
+  z-index: 2;
 }
 
 .netflix-home-video .content {
   position: absolute;
-  bottom: 28%;
+  bottom: 18%;
   left: 4%;
-  z-index: 10;
+  z-index: 3;
   max-width: 450px;
 }
 
-.netflix-home-video .content .left img {
-  width: 100%;
-  max-width: 380px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
+.hero-title {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  letter-spacing: 12px;
+  margin-bottom: 24px;
+  color: #fff;
 }
 
 .hero-buttons {
@@ -259,7 +246,7 @@ body {
 }
 
 .btn-info:hover {
-  background: rgba(109, 109, 110, 0.4);
+  background: rgba(109, 109, 110, 0.7);
 }
 
 /* ── Slider Box (rows container) ──────────────────────────────────────────── */
@@ -370,6 +357,27 @@ body {
 .slider-btn.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.netflix-home-video.money-heist-hero  {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 35%, transparent 100%),
+    linear-gradient(to top, #141414 0%, transparent 35%),
+    url("/images/money-heist-korea.jpg") url("/images/money-heist-korea.jpg") center top / cover no-repeat !important; 
+
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: transparent !important;
+}
+
+.netflix-home-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
 }
 
 /* ── Movie Card ───────────────────────────────────────────────────────────── */
@@ -567,9 +575,9 @@ body {
 
 @media (max-width: 600px) {
   .movie-card { flex: 0 0 calc(33.333% - 4px); }
-  .netflix-home-video .content { bottom: 20%; max-width: 90%; }
+  .netflix-home-video .content { bottom: 22%; max-width: 90%; position: absolute; z-index: 3; }
   .netflix-home-video .content .left img { max-width: 220px; }
-  .btn-play, .btn-info { padding: 8px 18px; font-size: 14px; }
+  .btn-play, .btn-info { padding: 8px 18px; font-size: 14px; background: white; color: black; font-weight: 700; }
   .row-title { font-size: 16px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .netflix-navbar { padding: 0 5%; }
