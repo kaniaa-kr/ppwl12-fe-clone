@@ -9,9 +9,9 @@ export default function Page1() {
             <Header />
 
             {/* Main Content */}
-           {/* Main Content */}
             <main 
-                className="flex-1 flex justify-center px-4 pt-16 md:pt-24 pb-12"
+                // 1. Tambahkan "items-center" di sini dan hapus "pt-16 md:pt-24"
+                className="flex-1 flex justify-center items-center px-4 py-12"
                 style={{
                     /* Gradien digelapkan (warna maroon pekat) dan pudar di titik 40% */
                     background: 'linear-gradient(180deg, rgba(35, 8, 12, 1) 0%, rgba(0, 0, 0, 1) 40%)',

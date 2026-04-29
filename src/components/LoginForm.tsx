@@ -8,18 +8,28 @@ const LoginForm = () => {
   const hasValue = email.length > 0;
 
   return (
-    <div className="w-full max-w-md mx-auto px-4 md:px-0">
-      {/* 1. Judul dibuat font-bold dengan ukuran tetap 32px */}
-      <h1 className="text-[32px] font-bold text-white mb-2 leading-tight">
+    <div style={{ maxWidth: '450px', margin: '0 auto', width: '100%', padding: '0 16px' }}>
+      
+      {/* 1. Judul dengan Jarak Bawah yang Tegas */}
+      <h1 style={{ 
+        fontSize: '32px', 
+        fontWeight: 'bold', 
+        color: 'white', 
+        marginBottom: '12px', 
+        lineHeight: '1.1',
+        letterSpacing: '-1px'
+      }}>
         Enter your info to sign in
       </h1>
-      <p className="text-base text-netflix-light-gray mb-6">
+
+      {/* 2. Subtitle dengan Jarak ke Form */}
+      <p style={{ fontSize: '16px', color: '#b3b3b3', marginBottom: '28px' }}>
         Or get started with a new account.
       </p>
 
-      <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-        {/* Email Input with Floating Label */}
-        <div className="relative">
+      <form onSubmit={(e) => e.preventDefault()}>
+        {/* Container Input */}
+        <div style={{ position: 'relative', marginBottom: '16px', width: '100%' }}>
           <input
             type="email"
             id="email"
@@ -27,59 +37,107 @@ const LoginForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            /* 2. Warna background dan border input dipertegas (tanpa opacity /60 atau /40) */
-            className="w-full bg-[#161616] border border-[#808080] rounded px-4 pt-6 pb-2 text-white text-base outline-none focus:border-white transition-colors peer"
+            // Style Input: Tinggi 56px agar proporsional
+            style={{
+              width: '100%',
+              height: '56px',
+              backgroundColor: '#161616',
+              border: `1px solid ${isFocused ? 'white' : '#808080'}`,
+              borderRadius: '4px',
+              color: 'white',
+              fontSize: '16px',
+              padding: '20px 16px 8px 16px',
+              outline: 'none',
+              boxSizing: 'border-box'
+            }}
             placeholder=" "
           />
+          {/* Label Melayang (Floating Label) */}
           <label
             htmlFor="email"
-            className={`absolute left-4 transition-all duration-200 pointer-events-none text-netflix-light-gray
-              ${isFocused || hasValue
-                ? 'top-2 text-xs'
-                : 'top-1/2 -translate-y-1/2 text-base'
-              }`}
+            style={{
+              position: 'absolute',
+              left: '16px',
+              transition: 'all 0.2s ease',
+              pointerEvents: 'none',
+              color: '#8c8c8c',
+              fontSize: (isFocused || hasValue) ? '12px' : '16px',
+              top: (isFocused || hasValue) ? '8px' : '50%',
+              transform: (isFocused || hasValue) ? 'none' : 'translateY(-50%)',
+              fontWeight: (isFocused || hasValue) ? '600' : 'normal'
+            }}
           >
             Email or mobile number
           </label>
         </div>
 
-        {/* Continue Button */}
+        {/* 3. Tombol Continue dengan Warna Merah Netflix yang Kuat */}
         <button
           type="submit"
-          /* 3. Teks tombol dibuat sedikit lebih tebal (font-semibold) */
-          className="w-full bg-netflix-red hover:bg-red-700 text-white font-semibold py-3 px-6 rounded text-base transition-colors"
+          style={{
+            width: '100%',
+            height: '48px',
+            backgroundColor: '#E50914',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            marginTop: '8px'
+          }}
         >
           Continue
         </button>
       </form>
 
-      {/* Get Help Dropdown */}
-      <div className="mt-6">
+      {/* 4. Get Help Section */}
+      <div style={{ marginTop: '24px' }}>
         <button
           onClick={() => setHelpExpanded(!helpExpanded)}
-          className="flex items-center gap-2 text-white text-base hover:underline"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            backgroundColor: 'transparent',
+            border: 'none',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+            padding: '4px 0'
+          }}
         >
           Get Help
           <svg
-            className={`w-4 h-4 transition-transform duration-200 ${helpExpanded ? 'rotate-180' : ''}`}
+            style={{ 
+              width: '16px', 
+              height: '16px', 
+              transition: 'transform 0.2s', 
+              transform: helpExpanded ? 'rotate(180deg)' : 'rotate(0deg)' 
+            }}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
           </svg>
         </button>
 
         {helpExpanded && (
-          <div className="mt-3 pl-4 space-y-2 text-netflix-light-gray">
-            <button type="button" className="block hover:underline text-left">I forgot my password</button>
-            <button type="button" className="block hover:underline text-left">I can't sign in</button>
+          <div style={{ marginTop: '12px', paddingLeft: '4px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <button style={{ background: 'none', border: 'none', color: '#b3b3b3', textAlign: 'left', cursor: 'pointer', fontSize: '14px' }}>I forgot my password</button>
+            <button style={{ background: 'none', border: 'none', color: '#b3b3b3', textAlign: 'left', cursor: 'pointer', fontSize: '14px' }}>I can't sign in</button>
           </div>
         )}
       </div>
 
-      {/* reCAPTCHA Notice */}
-      <p className="mt-6 text-sm text-netflix-gray">
+      {/* 5. reCAPTCHA Notice */}
+      <p style={{ 
+        marginTop: '32px', 
+        fontSize: '13px', 
+        color: '#737373', 
+        lineHeight: '1.4' 
+      }}>
         This page is protected by Google reCAPTCHA to ensure you're not a bot.
       </p>
     </div>
