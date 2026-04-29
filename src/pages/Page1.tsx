@@ -1,7 +1,27 @@
+import Header from '../components/Header';
+import LoginForm from '../components/LoginForm';
+import Footer from '../components/Footer';
+
 export default function Page1() {
     return (
-        <div className="h-[calc(100vh-4rem)] flex justify-center items-center">
-            <h1>Page 1</h1>
+        <div className="min-h-screen flex flex-col bg-black">
+            {/* Header */}
+            <Header />
+
+            {/* Main Content */}
+           {/* Main Content */}
+            <main 
+                className="flex-1 flex justify-center px-4 pt-16 md:pt-24 pb-12"
+                style={{
+                    /* Gradien digelapkan (warna maroon pekat) dan pudar di titik 40% */
+                    background: 'linear-gradient(180deg, rgba(35, 8, 12, 1) 0%, rgba(0, 0, 0, 1) 40%)',
+                }}
+            >
+                <LoginForm />
+            </main>
+
+            {/* Footer */}
+            <Footer />
         </div>
-    )
+    );
 }
