@@ -1,608 +1,380 @@
-import { useState, useEffect } from "react";
-import { heroChampions } from "@/lib/contoh-data";
+import { useState } from "react";
+import { Search, Menu, ChevronDown, Film, Tv, FileText, Play, Mic, Gamepad2, X } from "lucide-react";
 
-import FeaturedChampionCard from "@/components/contohComponent";
+// Content data
+const featuredContent = [
+  { id: 1, title: "Fury vs Makhmudov", image: "https://ext.same-assets.com/2862108679/751765164.jpeg", link: "#" },
+  { id: 2, title: "Thrash", image: "https://ext.same-assets.com/2862108679/222679081.jpeg", link: "#" },
+  { id: 3, title: "Beef", image: "https://ext.same-assets.com/2862108679/2545556021.jpeg", link: "#" },
+  { id: 4, title: "Cave", image: "https://ext.same-assets.com/2862108679/3560079199.jpeg", link: "#" },
+];
 
-import RiotLogo from "@/assets/RiotLogo";
+const categories = [
+  { id: "film", label: "Film", icon: Film },
+  { id: "series", label: "Series", icon: Tv },
+  { id: "documentary", label: "Documentary", icon: FileText },
+  { id: "reality", label: "Reality", icon: Play },
+  { id: "standup", label: "Stand-Up Comedy", icon: Mic },
+  { id: "game", label: "Game", icon: Gamepad2 },
+];
 
-function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
+const upcomingTitles = [
+  { id: 1, title: "Eat Pray Bark", date: "April 1, 2026", image: "https://ext.same-assets.com/2862108679/3154579283.jpeg" },
+  { id: 2, title: "Love on the Spectrum", date: "April 1, 2026", image: "https://ext.same-assets.com/2862108679/322132426.jpeg" },
+  { id: 3, title: "Sins of Kujo", date: "April 2, 2026", image: "https://ext.same-assets.com/2862108679/1993038278.jpeg" },
+  { id: 4, title: "Agent from Above", date: "April 2, 2026", image: "https://ext.same-assets.com/2862108679/32866069.jpeg" },
+  { id: 5, title: "XO, Kitty", date: "April 2, 2026", image: "https://ext.same-assets.com/2862108679/1930425254.jpeg" },
+  { id: 6, title: "The Ramparts of Ice", date: "April 2, 2026", image: "https://ext.same-assets.com/2862108679/1338077435.jpeg" },
+  { id: 7, title: "Gangs of Galicia", date: "April 3, 2026", image: "https://ext.same-assets.com/2862108679/1909496203.jpeg" },
+  { id: 8, title: "Bloodhounds", date: "April 3, 2026", image: "https://ext.same-assets.com/2862108679/2796548984.jpeg" },
+  { id: 9, title: "High Tides", date: "April 3, 2026", image: "https://ext.same-assets.com/2862108679/2570162012.jpeg" },
+  { id: 10, title: "Untold: Chess Mates", date: "April 7, 2026", image: "https://ext.same-assets.com/2862108679/3835355915.jpeg" },
+  { id: 11, title: "The Jackbox Party Essentials", date: "April 7, 2026", image: "https://ext.same-assets.com/2862108679/4051700569.jpeg" },
+  { id: 12, title: "Trust Me: The False Prophet", date: "April 8, 2026", image: "https://ext.same-assets.com/2862108679/3497203224.jpeg" },
+  { id: 13, title: "Bandi", date: "April 9, 2026", image: "https://ext.same-assets.com/2862108679/3421491128.jpeg" },
+  { id: 14, title: "Big Mistakes", date: "April 9, 2026", image: "https://ext.same-assets.com/2862108679/3892587682.jpeg" },
+  { id: 15, title: "Thrash", date: "April 10, 2026", image: "https://ext.same-assets.com/2862108679/222679081.jpeg" },
+  { id: 16, title: "Temptation Island", date: "April 10, 2026", image: "https://ext.same-assets.com/2862108679/3886550987.jpeg" },
+  { id: 17, title: "Turn of the Tide", date: "April 10, 2026", image: "https://ext.same-assets.com/2862108679/2704760760.jpeg" },
+  { id: 18, title: "Tyson Fury vs. Arslanbek Makhmudov", date: "April 12, 2026", image: "https://ext.same-assets.com/2862108679/751765164.jpeg" },
+  { id: 19, title: "At Home With The Furys", date: "April 12, 2026", image: "https://ext.same-assets.com/2862108679/1121778995.jpeg" },
+  { id: 20, title: "Noah Kahan: Out of Body", date: "April 13, 2026", image: "https://ext.same-assets.com/2862108679/4010341465.jpeg" },
+];
 
-    return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-sm">
-            <div className="flex items-center justify-between px-6 py-4">
-                {/* Riot Games Logo */}
-                <div className="flex items-center gap-2 cursor-pointer">
-                    <RiotLogo />
-                </div>
+const latestNews = [
+  {
+    id: 1,
+    region: "Japan, Global",
+    title: "'Soul Mate' Main Trailer Shows a Decade Guided by Fate",
+    image: "https://ext.same-assets.com/2862108679/1113852331.webp",
+    link: "#",
+  },
+  {
+    id: 2,
+    region: "Argentina, Global",
+    title: "Netflix announces El sobrino, the new film by Damian Szifron starring Leonardo Sbaraglia",
+    image: "https://ext.same-assets.com/2862108679/3131543598.jpeg",
+    link: "#",
+  },
+  {
+    id: 3,
+    region: "United States",
+    title: "'Running Point' Season 2 Shoots and Scores With All-Star Brand Partners",
+    image: "https://ext.same-assets.com/2862108679/2609405785.jpeg",
+    link: "#",
+  },
+];
 
-                {/* Right side */}
-                <div className="flex items-center gap-6">
-                    {/* Language selector */}
-                    <button className="p-2 hover:bg-white/10 rounded-full transition-colors">
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            className="text-white"
-                        >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                        </svg>
-                    </button>
+export default function MediaPage() {
+  const [selectedMonth, setSelectedMonth] = useState("April");
+  const [showAllTitles, setShowAllTitles] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-                    {/* Menu button */}
-                    <button
-                        className="w-12 h-12 flex items-center justify-center bg-[#1a1a1d] rounded-full hover:bg-[#2a2a2d] transition-colors"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                    >
-                        <div className="flex flex-col gap-1.5">
-                            <span className="w-5 h-0.5 bg-white rounded-full" />
-                            <span className="w-5 h-0.5 bg-white rounded-full" />
-                            <span className="w-5 h-0.5 bg-white rounded-full" />
-                        </div>
-                    </button>
-                </div>
+  const displayedTitles = showAllTitles ? upcomingTitles : upcomingTitles.slice(0, 12);
+
+  return (
+    <main className="min-h-screen bg-[#141414]">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#141414]/95 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <img
+                src="https://ext.same-assets.com/2862108679/1633257960.svg"
+                alt="Netflix"
+                className="h-6 sm:h-7"
+              />
+              <span className="text-white text-sm sm:text-base font-light tracking-wide">
+                Media Center
+              </span>
             </div>
 
-            {/* Mobile menu overlay */}
-            {menuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-[#0a0a0c]/98 backdrop-blur-md p-6 border-t border-[#1e1e21]">
-                    <nav className="flex flex-col gap-4">
-                        <a href="#" className="text-white hover:text-[#c8aa6e] transition-colors font-display tracking-wider">CHAMPIONS</a>
-                        <a href="#" className="text-white hover:text-[#c8aa6e] transition-colors font-display tracking-wider">REGIONS</a>
-                        <a href="#" className="text-white hover:text-[#c8aa6e] transition-colors font-display tracking-wider">STORIES</a>
-                        <a href="#" className="text-white hover:text-[#c8aa6e] transition-colors font-display tracking-wider">COMICS</a>
-                    </nav>
-                </div>
-            )}
-        </header>
-    );
-}
-
-function HeroCarousel() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
-
-    const goToSlide = (index: number) => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        setCurrentIndex(index);
-        setTimeout(() => setIsAnimating(false), 500);
-    };
-
-    const goToPrev = () => {
-        const newIndex = currentIndex === 0 ? heroChampions.length - 1 : currentIndex - 1;
-        goToSlide(newIndex);
-    };
-
-    const goToNext = () => {
-        const newIndex = currentIndex === heroChampions.length - 1 ? 0 : currentIndex + 1;
-        goToSlide(newIndex);
-    };
-
-    // Auto-advance carousel
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev === heroChampions.length - 1 ? 0 : prev + 1));
-        }, 6000);
-        return () => clearInterval(timer);
-    }, []);
-
-    const currentChampion = heroChampions[currentIndex];
-    const prevIndex = currentIndex === 0 ? heroChampions.length - 1 : currentIndex - 1;
-    const nextIndex = currentIndex === heroChampions.length - 1 ? 0 : currentIndex + 1;
-
-    return (
-        <section className="relative h-[85vh] min-h-150 overflow-hidden pt-16">
-            {/* Background slides */}
-            <div className="absolute inset-0">
-                {heroChampions.map((champion, index) => (
-                    <div
-                        key={champion.id}
-                        className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? "opacity-100" : "opacity-0"
-                            }`}
-                    >
-                        <img
-                            src={champion.image}
-                            alt={champion.name}
-                            className="w-full h-full object-cover object-top"
-                        />
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0c]/60 via-transparent to-[#0a0a0c]" />
-                        <div className="absolute inset-0 bg-linear-to-r from-[#0a0a0c]/80 via-transparent to-[#0a0a0c]/80" />
-                    </div>
-                ))}
+            {/* Navigation Buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              >
+                <Search className="w-5 h-5 text-white" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              >
+                <Menu className="w-5 h-5 text-white" />
+              </button>
             </div>
+          </div>
 
-            {/* Navigation arrows */}
-            <button
-                onClick={goToPrev}
-                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors"
-            >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>
-            </button>
-
-            <button
-                onClick={goToNext}
-                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/60 hover:text-white transition-colors"
-            >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6" />
-                </svg>
-            </button>
-
-            {/* Side previews */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/5 h-2/3 opacity-30 hidden lg:block">
-                <img
-                    src={heroChampions[prevIndex].image}
-                    alt=""
-                    className="w-full h-full object-cover object-top rounded-r-lg"
+          {/* Search Bar */}
+          {searchOpen && (
+            <div className="pb-4">
+              <div className="relative max-w-xl mx-auto">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for Netflix titles and news"
+                  className="w-full bg-white/10 border border-white/20 rounded-full py-3 pl-12 pr-10 text-white placeholder:text-gray-400 focus:outline-none focus:border-white/40 transition-colors"
                 />
-            </div>
-
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/5 h-2/3 opacity-30 hidden lg:block">
-                <img
-                    src={heroChampions[nextIndex].image}
-                    alt=""
-                    className="w-full h-full object-cover object-top rounded-l-lg"
-                />
-            </div>
-
-            {/* Champion info card - Bottom center */}
-            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-lg px-4">
-                <div
-                    className={`relative bg-[#0d0d0f]/90 backdrop-blur-sm border border-[#c8aa6e]/30 p-6 text-center ${isAnimating ? "animate-slide-in" : ""
-                        }`}
-                    style={{
-                        clipPath: "polygon(10% 0, 90% 0, 100% 20%, 100% 100%, 0 100%, 0 20%)",
-                    }}
+                <button
+                  type="button"
+                  onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full"
                 >
-                    {/* Gold top border */}
-                    <div className="absolute top-0 left-[10%] right-[10%] h-0.5 bg-linear-to-r from-transparent via-[#c8aa6e] to-transparent" />
-
-                    {/* Shield icon */}
-                    <div className="flex justify-center mb-3">
-                        <img
-                            src="https://ext.same-assets.com/156606680/4079577695.png"
-                            alt=""
-                            className="w-8 h-8 shield-glow"
-                        />
-                    </div>
-
-                    {/* Title */}
-                    <p className="text-[#c8aa6e] text-xs md:text-sm tracking-[0.3em] uppercase mb-2">
-                        {currentChampion.title}
-                    </p>
-
-                    {/* Name */}
-                    <h1 className="font-display text-2xl md:text-4xl text-[#f0e6d2] tracking-wider uppercase">
-                        {currentChampion.name}
-                    </h1>
-                </div>
+                  <X className="w-4 h-4 text-gray-400" />
+                </button>
+              </div>
             </div>
+          )}
+        </div>
+      </header>
 
-            {/* Slide indicators */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-                {heroChampions.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                                ? "bg-[#c8aa6e] w-6"
-                                : "bg-white/30 hover:bg-white/50"
-                            }`}
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/90 pt-20">
+          <div className="p-6 space-y-6">
+            <nav className="space-y-4">
+              <a href="#" className="block text-xl text-white hover:text-gray-300 transition-colors">Home</a>
+              <a href="#" className="block text-xl text-white hover:text-gray-300 transition-colors">Newsroom</a>
+              <a href="#" className="block text-xl text-white hover:text-gray-300 transition-colors">Company Assets</a>
+              <a href="#" className="block text-xl text-white hover:text-gray-300 transition-colors">Contact Us</a>
+            </nav>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute top-4 right-4 p-2 text-white"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
+      <section className="relative pt-16">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+              Discover stories and experiences to share with the world.
+            </h1>
+            <div className="relative max-w-xl mx-auto mb-12">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search for Netflix titles and news"
+                className="w-full bg-white/10 border border-white/20 rounded-full py-4 pl-12 pr-6 text-white placeholder:text-gray-400 focus:outline-none focus:border-white/40 transition-colors text-sm sm:text-base"
+              />
+            </div>
+          </div>
+
+          {/* Featured Content Carousel */}
+          <div className="max-w-6xl mx-auto">
+            <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-4 px-4 sm:px-0">
+              {featuredContent.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.link}
+                  className="flex-shrink-0 w-52 sm:w-60 md:w-72 content-card rounded-lg overflow-hidden group"
+                >
+                  <div className="relative aspect-[3/4]">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
                     />
-                ))}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </a>
+              ))}
             </div>
-        </section>
-    );
-}
+          </div>
+        </div>
+      </section>
 
-interface SectionTitleProps {
-    title: string;
-    icon?: string;
-}
+      {/* Content Filter Section */}
+      <section className="bg-[#1a1a1a] py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <span className="text-white text-lg sm:text-xl">
+              I'm interested in covering titles releasing in
+            </span>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 text-white text-lg sm:text-xl font-medium hover:text-gray-300 transition-colors"
+            >
+              {selectedMonth}
+              <ChevronDown className="w-5 h-5" />
+            </button>
+          </div>
 
-function SectionTitle({ title, icon }: SectionTitleProps) {
-    return (
-        <div className="flex flex-col items-center justify-center py-12">
-            {/* Shield Icon */}
-            {icon && (
-                <img
-                    src={icon}
-                    alt=""
-                    className="w-12 h-12 mb-4 shield-glow opacity-80"
-                />
-            )}
-
-            {/* Title with decorative lines */}
-            <div className="flex items-center justify-center w-full max-w-4xl px-4">
-                {/* Left decorative line */}
-                <div className="flex-1 h-px bg-linear-to-r from-transparent via-[#785a28] to-[#c8aa6e]" />
-
-                {/* Decorative element left */}
-                <svg
-                    width="20"
-                    height="10"
-                    viewBox="0 0 20 10"
-                    fill="none"
-                    className="mx-2 text-[#c8aa6e]"
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  className="category-pill flex items-center gap-2 text-white"
                 >
-                    <path d="M0 5L10 0L20 5L10 10L0 5Z" fill="currentColor" opacity="0.5" />
-                </svg>
-
-                {/* Title */}
-                <h2 className="section-title text-lg md:text-xl mx-4">{title}</h2>
-
-                {/* Decorative element right */}
-                <svg
-                    width="20"
-                    height="10"
-                    viewBox="0 0 20 10"
-                    fill="none"
-                    className="mx-2 text-[#c8aa6e]"
-                >
-                    <path d="M0 5L10 0L20 5L10 10L0 5Z" fill="currentColor" opacity="0.5" />
-                </svg>
-
-                {/* Right decorative line */}
-                <div className="flex-1 h-px bg-linear-to-l from-transparent via-[#785a28] to-[#c8aa6e]" />
-            </div>
+                  <IconComponent className="w-4 h-4" />
+                  {category.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
-    );
-}
+      </section>
 
-interface ChampionCardProps {
-    id: string;
-    name: string;
-    title: string;
-    image: string;
-    featured?: boolean;
-}
+      <div className="h-px bg-gray-700 max-w-7xl mx-auto" />
 
-function ChampionCard({
-    name,
-    title,
-    image,
-    featured = false,
-}: ChampionCardProps) {
-    return (
-        <div
-            className={`champion-card relative overflow-hidden cursor-pointer group ${featured ? "row-span-2 col-span-1 md:col-span-1" : ""
-                }`}
-        >
-            {/* Image */}
-            <div className={`relative ${featured ? "h-full min-h-125" : "aspect-3/4"}`}>
-                <img
-                    src={image}
-                    alt={name}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0c] via-[#0a0a0c]/30 to-transparent" />
-
-                {/* Hover overlay */}
-                <div className="card-overlay absolute inset-0 bg-[#c8aa6e]/10 opacity-0 transition-opacity duration-300" />
-            </div>
-
-            {/* Info section */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                {/* Shield icon */}
-                <div className="flex justify-center mb-3">
-                    <div className="w-10 h-10 rounded-full border border-[#c8aa6e]/50 flex items-center justify-center bg-[#0a0a0c]/50 backdrop-blur-sm">
-                        <img
-                            src="https://ext.same-assets.com/156606680/4079577695.png"
-                            alt=""
-                            className="w-5 h-5"
-                        />
-                    </div>
+      {/* Content Grid */}
+      <section className="py-12 bg-[#141414]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {displayedTitles.map((title) => (
+              <a key={title.id} href="#" className="content-card group">
+                <div className="relative aspect-[2/3] rounded-lg overflow-hidden mb-3">
+                  <img
+                    src={title.image}
+                    alt={title.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
                 </div>
+                <p className="text-gray-400 text-sm">{title.date}</p>
+              </a>
+            ))}
+          </div>
 
-                {/* Title */}
-                <h3 className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-center mb-1">
-                    {title}
-                </h3>
-
-                {/* Name */}
-                <h1 className="font-display text-lg md:text-xl text-[#f0e6d2] tracking-wider uppercase text-center">
-                    {name}
-                </h1>
-
-                {/* Explore button on hover */}
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center justify-center gap-2 text-[#c8aa6e] text-xs tracking-wider">
-                        <span>Explore</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </div>
+          {!showAllTitles && (
+            <div className="text-center mt-10">
+              <button
+                type="button"
+                onClick={() => setShowAllTitles(true)}
+                className="px-6 py-3 bg-transparent border border-white/30 text-white rounded-md hover:bg-white/10 transition-colors text-sm font-medium"
+              >
+                Show {upcomingTitles.length - 12} more in {selectedMonth}
+              </button>
             </div>
-
-            {/* Border glow on hover */}
-            <div className="absolute inset-0 border border-transparent group-hover:border-[#c8aa6e]/30 transition-colors duration-300 pointer-events-none" />
+          )}
         </div>
-    );
-}
+      </section>
 
-
-interface RegionCardProps {
-    id: string;
-    name: string;
-    icon: string;
-    image: string;
-}
-
-function RegionCard({ name, icon, image }: RegionCardProps) {
-    return (
-        <div className="champion-card group cursor-pointer w-full">
-            {/* Image container */}
-            <div className="relative aspect-video md:aspect-21/9 overflow-hidden">
-                <img
-                    src={image}
-                    alt={name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0c] via-[#0a0a0c]/30 to-transparent" />
-
-                {/* Hover overlay */}
-                <div className="card-overlay absolute inset-0 bg-[#c8aa6e]/5 opacity-0 transition-opacity duration-300" />
-            </div>
-
-            {/* Info card */}
-            <div className="bg-[#0d0d0f] border border-[#1e1e21] p-5 md:p-6 max-w-3xl mx-auto -mt-16 relative z-10">
-                {/* Top row - Region icon and name */}
-                <div className="flex items-center justify-center gap-6">
-                    {/* Region icon */}
-                    <div className="w-16 h-16 flex items-center justify-center">
-                        <img
-                            src={icon}
-                            alt={name}
-                            className="w-14 h-14 object-contain shield-glow"
-                        />
-                    </div>
-
-                    {/* Vertical divider */}
-                    <div className="w-[1px] h-12 bg-[#c8aa6e]/30" />
-
-                    {/* Name */}
-                    <h3 className="font-display text-3xl md:text-5xl text-[#f0e6d2] tracking-[0.3em] uppercase">
-                        {name}
-                    </h3>
+      {/* Latest News Section */}
+      <section className="py-16 bg-[#1a1a1a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-10">Latest news</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {latestNews.map((news) => (
+              <a
+                key={news.id}
+                href={news.link}
+                className="group relative rounded-xl overflow-hidden aspect-[4/5] content-card"
+              >
+                <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 news-card-overlay" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <span className="text-gray-400 text-sm mb-2">{news.region}</span>
+                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 line-clamp-3">
+                    {news.title}
+                  </h3>
+                  <button
+                    type="button"
+                    className="self-start px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm rounded-md hover:bg-white/20 transition-colors"
+                  >
+                    Read more
+                  </button>
                 </div>
-
-                {/* Explore button */}
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center justify-center gap-2 text-[#c8aa6e] text-xs tracking-wider py-3 border border-[#c8aa6e]/30 hover:bg-[#c8aa6e]/10 transition-colors">
-                        <span>Explore Region</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <button
+              type="button"
+              className="px-6 py-3 bg-transparent border border-white/30 text-white rounded-md hover:bg-white/10 transition-colors text-sm font-medium"
+            >
+              Read more news in the Newsroom
+            </button>
+          </div>
         </div>
-    );
-}
+      </section>
 
-import { footerLinks, legalLinks } from "@/lib/contoh-data";
+      {/* Company Assets Section */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[#141414]">
+          <div className="absolute inset-0 diagonal-stripes" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 italic">
+            Looking for company assets?
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-300 mb-8">
+            Get more images and information about Netflix on our company site.
+          </p>
+          <a
+            href="#"
+            className="inline-block px-8 py-3 bg-white text-black font-medium rounded-md hover:bg-gray-200 transition-colors"
+          >
+            Go to About Netflix
+          </a>
+        </div>
+      </section>
 
-function Footer() {
-    return (
-        <footer className="bg-[#0a0a0c] border-t border-[#1e1e21] mt-20">
-            {/* Main links */}
-            <div className="py-12">
-                <nav className="flex flex-col items-center gap-6">
-                    {footerLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className="text-white text-sm tracking-[0.2em] hover:text-[#c8aa6e] transition-colors"
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                </nav>
+      {/* Footer */}
+      <footer className="bg-[#0a0a0a] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div>
+              <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-4">Company</h3>
+              <nav className="space-y-3">
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">About Netflix</a>
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Newsroom</a>
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Company Assets</a>
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Start watching</a>
+              </nav>
             </div>
-
-            {/* Divider */}
-            <div className="decorative-line w-full" />
-
-            {/* Bottom section */}
-            <div className="py-10 px-6">
-                {/* Riot Games logo */}
-                <div className="flex justify-center mb-6">
-                    <div className="flex items-center gap-2 opacity-60">
-                        <svg
-                            width="24"
-                            height="28"
-                            viewBox="0 0 30 34"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-white"
-                        >
-                            <path
-                                d="M2.38 33.15L0 6.56L21.33 0L30 7.47V26.26L23.54 33.15H15.94L15.22 29.32H20.36L24.03 25.27V9.39L21.07 6.91L5.48 11.08L6.79 28.73L2.38 33.15Z"
-                                fill="currentColor"
-                            />
-                        </svg>
-                        <span className="text-white font-bold tracking-wide text-xs">RIOT<br />GAMES</span>
-                    </div>
-                </div>
-
-                {/* Copyright */}
-                <p className="text-center text-[#7a7a7a] text-xs leading-relaxed max-w-2xl mx-auto mb-8">
-                    TM & © 2026 Riot Games, Inc. League of Legends and all related logos, characters, names and
-                    distinctive likenesses thereof are exclusive property of Riot Games, Inc. All Rights Reserved.
-                </p>
-
-                {/* Legal links */}
-                <nav className="flex flex-col items-center gap-4 mb-8">
-                    {legalLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className="text-white text-xs tracking-[0.15em] hover:text-[#c8aa6e] transition-colors"
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                </nav>
-
-                {/* ESRB Rating */}
-                <div className="flex justify-center">
-                    <div className="flex items-start gap-4 bg-[#111113] p-4 border border-[#1e1e21]">
-                        {/* ESRB Logo */}
-                        <div className="flex flex-col items-center border-2 border-white/80 px-2 py-1">
-                            <span className="text-white text-[10px] font-bold tracking-wider">TEEN</span>
-                            <span className="text-white text-2xl font-bold leading-none">T</span>
-                            <span className="text-white text-[8px] font-bold tracking-wider">ESRB</span>
-                        </div>
-
-                        {/* Rating descriptors */}
-                        <div className="text-white text-xs leading-relaxed">
-                            <p>Blood</p>
-                            <p>Fantasy Violence</p>
-                            <p>Mild Suggestive Themes</p>
-                            <p>Use of Alcohol and Tobacco</p>
-                            <p className="text-[#7a7a7a] mt-2">Online Interactions Not Rated by the ESRB</p>
-                        </div>
-                    </div>
-                </div>
+            <div>
+              <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-4">Connect</h3>
+              <nav className="space-y-3">
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Contact Us</a>
+              </nav>
+              <div className="flex gap-4 mt-4">
+                <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                  </svg>
+                </a>
+                <a href="#" className="text-white hover:text-gray-300 transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
             </div>
-        </footer>
-    );
-}
-
-import {
-    latestChampions,
-    featuredChampions,
-    featuredChampionsLarge,
-    regions,
-} from "@/lib/contoh-data";
-
-export default function App() {
-    return (
-        <main className="min-h-screen bg-[#0a0a0c]">
-            <Header />
-
-            {/* Hero Carousel */}
-            <HeroCarousel />
-
-            {/* Latest Section */}
-            <section className="relative">
-                <SectionTitle
-                    title="Latest"
-                    icon="https://ext.same-assets.com/156606680/158895728.png"
-                />
-
-                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                        {/* First two small cards */}
-                        {latestChampions.slice(0, 2).map((champion) => (
-                            <ChampionCard key={champion.id} {...champion} />
-                        ))}
-
-                        {/* Featured large card */}
-                        <div className="row-span-2 hidden md:block">
-                            <ChampionCard {...latestChampions[2]} featured />
-                        </div>
-
-                        {/* Mobile version of featured card */}
-                        <div className="col-span-2 md:hidden">
-                            <ChampionCard {...latestChampions[2]} />
-                        </div>
-
-                        {/* Last two small cards */}
-                        {latestChampions.slice(3, 5).map((champion) => (
-                            <ChampionCard key={champion.id} {...champion} />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Featured Section */}
-            <section className="relative mt-8">
-                <SectionTitle
-                    title="Featured"
-                    icon="https://ext.same-assets.com/156606680/3023445828.png"
-                />
-
-                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                        {/* First two small cards */}
-                        {featuredChampions.slice(0, 2).map((champion) => (
-                            <ChampionCard key={champion.id} {...champion} />
-                        ))}
-
-                        {/* Featured large card */}
-                        <div className="row-span-2 hidden md:block">
-                            <ChampionCard {...featuredChampions[2]} featured />
-                        </div>
-
-                        {/* Mobile version of featured card */}
-                        <div className="col-span-2 md:hidden">
-                            <ChampionCard {...featuredChampions[2]} />
-                        </div>
-
-                        {/* Last two small cards */}
-                        {featuredChampions.slice(3, 5).map((champion) => (
-                            <ChampionCard key={champion.id} {...champion} />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Featured Champions Section - Large Cards */}
-            <section className="relative mt-8">
-                <SectionTitle
-                    title="Featured Champions"
-                    icon="https://ext.same-assets.com/156606680/4079577695.png"
-                />
-
-                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-                    {/* Horizontal scroll wrapper */}
-                    <div className="relative">
-                        <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-                            {featuredChampionsLarge.map((champion) => (
-                                <div
-                                    key={champion.id}
-                                    className="shrink-0 w-70 md:w-[320px] snap-start"
-                                >
-                                    <FeaturedChampionCard {...champion} />
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Fade indicators */}
-                        <div className="absolute right-0 top-0 bottom-6 w-20 bg-linear-to-l from-[#0a0a0c] to-transparent pointer-events-none hidden md:block" />
-                    </div>
-                </div>
-            </section>
-
-            {/* Regions Section */}
-            <section className="relative mt-8">
-                <SectionTitle title="Explore Regions" />
-
-                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-                    {regions.map((region) => (
-                        <RegionCard key={region.id} {...region} />
-                    ))}
-                </div>
-            </section>
-
-            {/* Footer */}
-            <Footer />
-        </main>
-    );
+            <div>
+              <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-4">Legal</h3>
+              <nav className="space-y-3">
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Terms and Conditions</a>
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Privacy</a>
+                <a href="#" className="block text-white hover:text-gray-300 transition-colors">Cookie Preferences</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
 }
