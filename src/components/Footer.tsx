@@ -12,51 +12,50 @@ const Footer = () => {
     { text: 'Corporate Information', href: '#' },
   ];
 
-  // Definisi warna dan gaya umum agar mudah dikelola
-  const textGray = '#737373';
+  const netflixGray = '#737373';
 
   return (
     <footer style={{
       width: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.75)', // Hitam transparan khas Netflix
-      borderTop: '1px solid #333',
-      padding: '30px 0 50px 0',
-      marginTop: 'auto', // Memastikan footer tetap di bawah
-      color: textGray,
-      fontFamily: 'sans-serif'
+      // Efek "Block" abu-abu gelap agar kontras dengan bagian atas
+      backgroundColor: '#101010', 
+      borderTop: '1px solid #333', 
+      padding: '50px 0',
+      marginTop: 'auto',
+      color: netflixGray,
+      fontFamily: 'Arial, sans-serif',
     }}>
       
-      {/* Kontainer Utama - Dibatasi lebarnya dan ditaruh di tengah */}
+      {/* Kontainer Utama (Menengah) */}
       <div style={{
         maxWidth: '900px',
         margin: '0 auto',
-        padding: '0 20px',
+        padding: '0 24px',
         boxSizing: 'border-box'
       }}>
         
-        {/* 1. Baris Pertanyaan/Telepon */}
         <p style={{ fontSize: '16px', marginBottom: '30px' }}>
           Questions? Call{' '}
-          <a href="tel:007-803-321-8275" style={{ color: textGray, textDecoration: 'none' }}>
+          <a href="tel:007-803-321-8275" style={{ color: netflixGray, textDecoration: 'none' }}>
             007-803-321-8275 (Toll-Free)
           </a>
         </p>
 
-        {/* 2. Grid Link Footer (4 Kolom) */}
+        {/* Grid Links - 4 Kolom */}
         <ul style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)', // Membagi rata 4 kolom
-          gap: '12px 0',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '16px 0',
           padding: 0,
-          margin: '0 0 30px 0',
-          listStyle: 'none',
-          fontSize: '13px'
+          margin: '0 0 40px 0',
+          listStyle: 'none'
         }}>
           {footerLinks.map((link) => (
             <li key={link.text}>
               <a href={link.href} style={{ 
-                color: textGray, 
-                textDecoration: 'none' 
+                color: netflixGray, 
+                textDecoration: 'none',
+                fontSize: '13px'
               }}>
                 {link.text}
               </a>
@@ -64,25 +63,27 @@ const Footer = () => {
           ))}
         </ul>
 
-        {/* 3. Selector Bahasa yang Dipercantik */}
+        {/* Language Selector Box */}
         <div style={{ position: 'relative', display: 'inline-block' }}>
-          {/* Ikon Globe (Posisi Absolut di dalam kotak) */}
+          
+          {/* IKON TRANSLATE/GLOBE (Fixed Version) */}
           <div style={{
             position: 'absolute',
             left: '12px',
             top: '50%',
             transform: 'translateY(-50%)',
-            pointerEvents: 'none',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            pointerEvents: 'none',
+            color: 'white'
           }}>
-            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
-              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path d="M12.33 5h-2.12c-.22-1.33-.59-2.52-1.07-3.43a6.5 6.5 0 0 1 3.19 3.43m-3.15 0H6.82c-.2-1.3-.53-2.43-.95-3.26a6.5 6.5 0 0 1 3.3 0c-.42.83-.75 1.96-.95 3.26M4.94 1.57c-.48.91-.85 2.1-1.07 3.43h2.12c.18-1.12.48-2.11.84-2.88a6.5 6.5 0 0 0-1.89-.55M3.6 6c-.06.64-.1 1.3-.1 2s.04 1.36.1 2h3.05V6zm4.15 0v4h3.05c.06-.64.1-1.3.1-2s-.04-1.36-.1-2zm0 5v2.85c.42-.83.75-1.96.95-3.26h2.24a6.5 6.5 0 0 1-3.19 3.41m-1.1 0H4.41a6.5 6.5 0 0 1 3.19-3.41c-.2.9-.53 1.9-.95 3.26M3.33 11c.22 1.33.59 2.52 1.07 3.43a6.5 6.5 0 0 1-1.89-.55c.36-.77.66-1.76.84-2.88h-2.12zM3.1 10c-.06-.64-.1-1.3-.1-2s.04-1.36.1-2H1.05a6.5 6.5 0 0 0 0 4zm11.85 0a6.5 6.5 0 0 0 0-4h-2.05c.06.64.1 1.3.1 2s-.04 1.36-.1 2z" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
           </div>
 
-          {/* Tag Select */}
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
@@ -91,31 +92,32 @@ const Footer = () => {
               color: 'white',
               border: '1px solid #737373',
               borderRadius: '2px',
-              padding: '12px 35px 12px 35px',
+              padding: '10px 35px 10px 40px', 
               fontSize: '14px',
-              appearance: 'none', // Menghilangkan panah default browser
+              appearance: 'none',
               cursor: 'pointer',
-              minWidth: '130px'
+              minWidth: '140px',
+              outline: 'none'
             }}
           >
             <option value="id-ID" style={{backgroundColor: '#000'}}>Bahasa Indonesia</option>
             <option value="en-ID" style={{backgroundColor: '#000'}}>English</option>
           </select>
 
-          {/* Ikon Panah Bawah (Caret) */}
+          {/* Icon Panah Down */}
           <div style={{
             position: 'absolute',
-            right: '12px',
+            right: '10px',
             top: '50%',
             transform: 'translateY(-50%)',
-            pointerEvents: 'none'
+            pointerEvents: 'none',
+            color: 'white'
           }}>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+            <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />
             </svg>
           </div>
         </div>
-
       </div>
     </footer>
   );

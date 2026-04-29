@@ -3,96 +3,98 @@ import { useState } from 'react';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [isFocused, setIsFocused] = useState(false);
-  const [helpExpanded, setHelpExpanded] = useState(false);
+  const [helpExpanded, setHelpExpanded] = useState(true); // Set true agar kita bisa lihat perubahannya langsung
 
   const hasValue = email.length > 0;
 
   return (
-    <div style={{ maxWidth: '450px', margin: '0 auto', width: '100%', padding: '0 16px' }}>
+    <div style={{ 
+      maxWidth: '440px', 
+      margin: '0 auto', 
+      width: '100%', 
+      textAlign: 'left',
+      fontFamily: 'Arial, sans-serif'
+    }}>
       
-      {/* 1. Judul dengan Jarak Bawah yang Tegas */}
+      {/* 1. Judul (Font 32px, Putih, Bold) */}
       <h1 style={{ 
         fontSize: '32px', 
-        fontWeight: 'bold', 
+        fontWeight: '700', 
         color: 'white', 
-        marginBottom: '12px', 
-        lineHeight: '1.1',
-        letterSpacing: '-1px'
+        marginBottom: '10px',
+        marginTop: '0'
       }}>
         Enter your info to sign in
       </h1>
 
-      {/* 2. Subtitle dengan Jarak ke Form */}
-      <p style={{ fontSize: '16px', color: '#b3b3b3', marginBottom: '28px' }}>
+      {/* 2. Subtitle (Font 16px, Abu-abu terang) */}
+      <p style={{ 
+        fontSize: '16px', 
+        color: '#b3b3b3', 
+        marginBottom: '28px',
+        marginTop: '0'
+      }}>
         Or get started with a new account.
       </p>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        {/* Container Input */}
-        <div style={{ position: 'relative', marginBottom: '16px', width: '100%' }}>
+        {/* 3. Container Input (Tinggi 56px, BG Transparan Gelap) */}
+        <div style={{ position: 'relative', marginBottom: '16px' }}>
           <input
-            type="email"
-            id="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            // Style Input: Tinggi 56px agar proporsional
             style={{
               width: '100%',
               height: '56px',
-              backgroundColor: '#161616',
-              border: `1px solid ${isFocused ? 'white' : '#808080'}`,
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              border: '1px solid #8c8c8c',
               borderRadius: '4px',
               color: 'white',
               fontSize: '16px',
-              padding: '20px 16px 8px 16px',
+              padding: '24px 16px 8px 16px',
               outline: 'none',
               boxSizing: 'border-box'
             }}
-            placeholder=" "
           />
-          {/* Label Melayang (Floating Label) */}
-          <label
-            htmlFor="email"
-            style={{
-              position: 'absolute',
-              left: '16px',
-              transition: 'all 0.2s ease',
-              pointerEvents: 'none',
-              color: '#8c8c8c',
-              fontSize: (isFocused || hasValue) ? '12px' : '16px',
-              top: (isFocused || hasValue) ? '8px' : '50%',
-              transform: (isFocused || hasValue) ? 'none' : 'translateY(-50%)',
-              fontWeight: (isFocused || hasValue) ? '600' : 'normal'
-            }}
-          >
+          <label style={{
+            position: 'absolute',
+            left: '16px',
+            color: '#8c8c8c',
+            transition: 'all 0.1s ease',
+            pointerEvents: 'none',
+            fontSize: (isFocused || hasValue) ? '12px' : '16px',
+            top: (isFocused || hasValue) ? '8px' : '50%',
+            transform: (isFocused || hasValue) ? 'none' : 'translateY(-50%)',
+          }}>
             Email or mobile number
           </label>
         </div>
 
-        {/* 3. Tombol Continue dengan Warna Merah Netflix yang Kuat */}
+        {/* 4. Tombol Continue (Warna Merah Netflix, Font Bold) */}
         <button
           type="submit"
           style={{
             width: '100%',
-            height: '48px',
+            height: '50px',
             backgroundColor: '#E50914',
             color: 'white',
             border: 'none',
             borderRadius: '4px',
             fontSize: '16px',
-            fontWeight: 'bold',
+            fontWeight: '600',
             cursor: 'pointer',
-            marginTop: '8px'
+            marginBottom: '24px'
           }}
         >
           Continue
         </button>
       </form>
 
-      {/* 4. Get Help Section */}
-      <div style={{ marginTop: '24px' }}>
+      {/* 5. Bagian Get Help (Tanpa Underline di teks utamanya) */}
+      <div style={{ marginTop: '30px' }}>
         <button
           onClick={() => setHelpExpanded(!helpExpanded)}
           style={{
@@ -104,7 +106,8 @@ const LoginForm = () => {
             color: 'white',
             fontSize: '16px',
             cursor: 'pointer',
-            padding: '4px 0'
+            padding: '0',
+            textDecoration: 'none' // TEKS UTAMA TANPA UNDERLINE
           }}
         >
           Get Help
@@ -113,29 +116,49 @@ const LoginForm = () => {
               width: '16px', 
               height: '16px', 
               transition: 'transform 0.2s', 
-              transform: helpExpanded ? 'rotate(180deg)' : 'rotate(0deg)' 
+              transform: helpExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+              color: 'white'
             }}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            strokeWidth={2.5}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
 
+        {/* 6. Link Opsi (Dengan Underline & Warna Putih) */}
         {helpExpanded && (
-          <div style={{ marginTop: '12px', paddingLeft: '4px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <button style={{ background: 'none', border: 'none', color: '#b3b3b3', textAlign: 'left', cursor: 'pointer', fontSize: '14px' }}>I forgot my password</button>
-            <button style={{ background: 'none', border: 'none', color: '#b3b3b3', textAlign: 'left', cursor: 'pointer', fontSize: '14px' }}>I can't sign in</button>
+          <div style={{ 
+            marginTop: '16px', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '12px'
+          }}>
+            <a href="#" style={{ 
+              color: 'white', 
+              textDecoration: 'underline', // PAKAI UNDERLINE
+              fontSize: '15px' 
+            }}>
+              Forgot email or mobile number?
+            </a>
+            <a href="#" style={{ 
+              color: 'white', 
+              textDecoration: 'underline', // PAKAI UNDERLINE
+              fontSize: '15px' 
+            }}>
+              Learn more about sign-in
+            </a>
           </div>
         )}
       </div>
 
-      {/* 5. reCAPTCHA Notice */}
+      {/* 7. Footer Notice (Teks sangat kecil & abu-abu) */}
       <p style={{ 
-        marginTop: '32px', 
+        marginTop: '35px', 
         fontSize: '13px', 
-        color: '#737373', 
+        color: '#8c8c8c', 
         lineHeight: '1.4' 
       }}>
         This page is protected by Google reCAPTCHA to ensure you're not a bot.
