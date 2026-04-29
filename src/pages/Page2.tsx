@@ -11,7 +11,7 @@ export default function Page1() {
     {
       title: "Download your shows to watch offline",
       desc: "Save your favorites easily and always have something to watch.",
-      image: "/images1/netflix-download.jpg"
+      image: "/images1/netflix-download. jpg"
     },
     {
       title: "Watch everywhere",

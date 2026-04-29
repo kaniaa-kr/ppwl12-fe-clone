@@ -15,7 +15,7 @@ const categories = [
   { id: "documentary", label: "Documentary", icon: FileText },
   { id: "reality", label: "Reality", icon: Play },
   { id: "standup", label: "Stand-Up Comedy", icon: Mic },
-  { id: "game", label: "Game", icon: Gamepad2 },
+  { id: "game", label: "Game", icon: Gamepad2 } ,
 ];
 
 const upcomingTitles = [
