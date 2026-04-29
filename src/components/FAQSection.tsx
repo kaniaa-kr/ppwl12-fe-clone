@@ -1,55 +1,143 @@
- import { ChevronDown, Globe } from 'lucide-react';
+import { useState } from "react";
 
-const footerLinks = [
-  ['FAQ', 'Help Center', 'Account', 'Media Center'],
-  ['Investor Relations', 'Jobs', 'Netflix Shop', 'Redeem Gift Cards'],
-  ['Buy Gift Cards', 'Ways to Watch', 'Terms of Use', 'Privacy'],
-  ['Cookie Preferences', 'Corporate Information', 'Contact Us', 'Speed Test'],
-  ['Legal Notices', 'Only on Netflix', 'Ad Choices'],
+const faqs = [
+  {
+    question: "What is Netflix?",
+    answer: `Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.
+
+You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!`,
+  },
+  {
+    question: "How much does Netflix cost?",
+    answer: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from IDR 54,000 to IDR 186,000/month.",
+  },
+  {
+    question: "Where can I watch?",
+    answer:`Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
+
+You can also download your favorite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.`,
+  },
+  {
+    question: "How do I cancel?",
+    answer:
+      "Netflix is flexible. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
+  },
+  {
+    question: "What can I watch on Netflix?",
+    answer:
+      "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+  },
+  {
+    question: "Is Netflix good for kids?",
+    answer:`The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.
+
+Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.`,
+  },
 ];
 
-export function Footer() {
+export function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <footer className="bg-black py-12 md:py-16 px-4 md:px-8 lg:px-12 border-t border-gray-800">
-      <div className="max-w-6xl mx-auto">
-        {/* Phone Number */}
-        <p className="text-gray-400 mb-8 text-sm md:text-base">
-          Questions? Call{' '}
-          <a href="tel:0078033218225" className="hover:underline">
-            007-803-321-8225
-          </a>
-        </p>
+    <section style={{ background: "#000", padding: "60px 0" }}>
+      <div style={{ width: "90%", maxWidth: "1200px", margin: "0 auto" }}>
+        <h2
+          style={{
+            color: "#fff",
+            fontSize: "28px",
+            fontWeight: 800,
+            marginBottom: "16px",
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
 
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
-          {footerLinks.flat().map((link) => (
-            <button
-              key={link}
-              type="button"
-              className="text-gray-400 text-sm hover:underline transition-colors text-left"
-            >
-              {link}
-            </button>
-          ))}
-        </div>
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
 
-        {/* Language Selector */}
-        <div className="mb-4">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded bg-transparent text-gray-400 hover:text-white transition-colors">
-            <Globe className="w-4 h-4" />
-            <span>English</span>
-            <ChevronDown className="w-4 h-4" />
-          </button>
-        </div>
+          return (
+            <div key={faq.question} style={{ marginBottom: "8px" }}>
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                style={{
+                  width: "100%",
+                  minHeight: "76px",
+                  background: "#2d2d2d",
+                  color: "#fff",
+                  border: "none",
+                  padding: "0 28px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  fontSize: "24px",
+                  cursor: "pointer",
+                  textAlign: "left",
+                }}
+              >
+                <span>{faq.question}</span>
 
-        {/* Netflix Indonesia */}
-        <p className="text-gray-400 text-sm mb-6">Netflix Indonesia</p>
+                <span
+                  style={{
+                    position: "relative",
+                    width: "28px",
+                    height: "28px",
+                    display: "inline-block",
+                    transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                    transition: "transform 0.2s ease",
+                    flexShrink: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: 0,
+                      width: "100%",
+                      height: "2px",
+                      background: "#fff",
+                      transform: "translateY(-50%)",
+                    }}
+                  />
+                  <span
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      top: 0,
+                      width: "2px",
+                      height: "100%",
+                      background: "#fff",
+                      transform: "translateX(-50%)",
+                    }}
+                  />
+                </span>
+              </button>
 
-        {/* Copyright */}
-        <p className="text-gray-500 text-sm">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.
-        </p>
+              {isOpen && (
+                <div
+                  style={{
+                    background: "#2d2d2d",
+                    color: "#fff",
+                    padding: "24px 28px",
+                    fontSize: "22px",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {faq.answer.split("\n\n").map((text, i) => (
+                    <p
+                      key={i}
+                      style={{
+                        marginBottom: i === faq.answer.split("\n\n").length - 1 ? 0 : "20px",
+                      }}
+                    >
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
-    </footer>
+    </section>
   );
 }
