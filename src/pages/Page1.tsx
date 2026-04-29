@@ -17,69 +17,69 @@ interface SliderSection {
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-  <section className="trending-now">
-          <div className="container">
-            <h2 className="section-header">Trending Now</h2>
-            <div className="movie-container">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <img key={i} src={`/img/netflix-movie-${i}.jpg`} alt="movie" className="netflix-movie" />
-              ))}
-            </div>
-          </div>
-        </section>
+<section className="trending-now">
+  <div className="container">
+    <h2 className="section-header">Trending Now</h2>
+    <div className="movie-container">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <img key={i} src={`/img/netflix-movie-${i}.jpg`} alt="movie" className="netflix-movie" />
+      ))}
+    </div>
+  </div>
+</section>
 
 const TRENDING_MOVIES: Movie[] = [
-  { id: 1, image: "./images/trending/img6.jpeg",  match: 97, type: "Limited Series", genres: "Provocative • Psychological • Thriller", isHD: true },
-  { id: 2, image: "./images/trending/img2.jpeg",  match: 95, type: "Movie",           genres: "Action • Adventure • Drama",            isHD: true },
-  { id: 3, image: "./images/trending/img3.webp",  match: 92, type: "TV Show",         genres: "Comedy • Romance",                     isHD: true },
-  { id: 4, image: "./images/trending/img4.jpeg",  match: 89, type: "Documentary",     genres: "True Crime • Mystery",                 isHD: true },
-  { id: 5, image: "./images/trending/img1.webp",  match: 98, type: "Limited Series",  genres: "Sci-Fi • Thriller",                    isHD: true },
-  { id: 6, image: "./images/trending/img2.jpeg",  match: 91, type: "Movie",           genres: "Horror • Suspense",                    isHD: true },
+  { id: 1, image: "./images/trending/img6.jpeg", match: 97, type: "Limited Series", genres: "Provocative • Psychological • Thriller", isHD: true },
+  { id: 2, image: "./images/trending/img2.jpeg", match: 95, type: "Movie", genres: "Action • Adventure • Drama", isHD: true },
+  { id: 3, image: "./images/trending/img3.webp", match: 92, type: "TV Show", genres: "Comedy • Romance", isHD: true },
+  { id: 4, image: "./images/trending/img4.jpeg", match: 89, type: "Documentary", genres: "True Crime • Mystery", isHD: true },
+  { id: 5, image: "./images/trending/img1.webp", match: 98, type: "Limited Series", genres: "Sci-Fi • Thriller", isHD: true },
+  { id: 6, image: "./images/trending/img2.jpeg", match: 91, type: "Movie", genres: "Horror • Suspense", isHD: true },
 ];
 
 const HOLLYWOOD_MOVIES: Movie[] = [
-  { id: 7,  image: "./images/trending/img4.jpeg",  match: 96, type: "Movie", genres: "Action • Blockbuster",  isHD: true },
-  { id: 8,  image: "./images/trending/img1.webp",  match: 94, type: "Movie", genres: "Drama • Oscar-Winning", isHD: true },
-  { id: 9,  image: "./images/trending/img3.webp",  match: 88, type: "Movie", genres: "Comedy • Family",       isHD: true },
-  { id: 10, image: "./images/trending/img6.jpeg",  match: 97, type: "Movie", genres: "Thriller • Suspense",   isHD: true },
-  { id: 11, image: "./images/trending/img2.jpeg",  match: 93, type: "Movie", genres: "Romance • Drama",       isHD: true },
-  { id: 12, image: "./images/trending/img4.jpeg",  match: 90, type: "Movie", genres: "Animation • Family",    isHD: true },
+  { id: 7, image: "./images/trending/img4.jpeg", match: 96, type: "Movie", genres: "Action • Blockbuster", isHD: true },
+  { id: 8, image: "./images/trending/img1.webp", match: 94, type: "Movie", genres: "Drama • Oscar-Winning", isHD: true },
+  { id: 9, image: "./images/trending/img3.webp", match: 88, type: "Movie", genres: "Comedy • Family", isHD: true },
+  { id: 10, image: "./images/trending/img6.jpeg", match: 97, type: "Movie", genres: "Thriller • Suspense", isHD: true },
+  { id: 11, image: "./images/trending/img2.jpeg", match: 93, type: "Movie", genres: "Romance • Drama", isHD: true },
+  { id: 12, image: "./images/trending/img4.jpeg", match: 90, type: "Movie", genres: "Animation • Family", isHD: true },
 ];
 
 const BOLLYWOOD_MOVIES: Movie[] = [
-  { id: 13, image: "./images/trending/img2.jpeg",  match: 95, type: "Movie",           genres: "Musical • Romance",  isHD: true },
-  { id: 14, image: "./images/trending/img6.jpeg",  match: 97, type: "Movie",           genres: "Drama • Family",     isHD: true },
-  { id: 15, image: "./images/trending/img1.webp",  match: 91, type: "Movie",           genres: "Action • Thriller",  isHD: true },
-  { id: 16, image: "./images/trending/img3.webp",  match: 89, type: "Movie",           genres: "Comedy • Drama",     isHD: true },
-  { id: 17, image: "./images/trending/img4.jpeg",  match: 93, type: "Movie",           genres: "Romance • Musical",  isHD: true },
-  { id: 18, image: "./images/trending/img2.jpeg",  match: 96, type: "Limited Series",  genres: "Crime • Drama",      isHD: true },
+  { id: 13, image: "./images/trending/img2.jpeg", match: 95, type: "Movie", genres: "Musical • Romance", isHD: true },
+  { id: 14, image: "./images/trending/img6.jpeg", match: 97, type: "Movie", genres: "Drama • Family", isHD: true },
+  { id: 15, image: "./images/trending/img1.webp", match: 91, type: "Movie", genres: "Action • Thriller", isHD: true },
+  { id: 16, image: "./images/trending/img3.webp", match: 89, type: "Movie", genres: "Comedy • Drama", isHD: true },
+  { id: 17, image: "./images/trending/img4.jpeg", match: 93, type: "Movie", genres: "Romance • Musical", isHD: true },
+  { id: 18, image: "./images/trending/img2.jpeg", match: 96, type: "Limited Series", genres: "Crime • Drama", isHD: true },
 ];
 
 const SECTIONS: SliderSection[] = [
   { title: "Trending Now", movies: TRENDING_MOVIES },
-  { title: "Hollywood",    movies: HOLLYWOOD_MOVIES },
-  { title: "Bollywood",    movies: BOLLYWOOD_MOVIES },
+  { title: "Hollywood", movies: HOLLYWOOD_MOVIES },
+  { title: "Bollywood", movies: BOLLYWOOD_MOVIES },
 ];
 
 const NAV_LINKS = ["Home", "TV Shows", "Movies", "New & Popular", "My List"];
 
 const FOOTER_LINKS = [
-  ["Audio and Subtitle",  "Media Center",       "Privacy",      "Contact Us"   ],
-  ["Audio Description",   "Investor Relations", "Terms of Use", "Legal Notices"],
-  ["Help Center",         "Jobs"                                                ],
-  ["Gift Cards",          "Subscription"                                        ],
+  ["Audio and Subtitle", "Media Center", "Privacy", "Contact Us"],
+  ["Audio Description", "Investor Relations", "Terms of Use", "Legal Notices"],
+  ["Help Center", "Jobs"],
+  ["Gift Cards", "Subscription"],
 ];
 
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 
-const IconPlay     = () => <svg viewBox="0 0 24 24" fill="currentColor"       width="20" height="20"><path d="M8 5v14l11-7z"/></svg>;
-const IconSearch   = () => <svg viewBox="0 0 24 24" fill="currentColor"       width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>;
-const IconBell     = () => <svg viewBox="0 0 24 24" fill="currentColor"       width="20" height="20"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>;
-const IconInfo     = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8"  x2="12.01" y2="8"/></svg>;
-const IconPlus     = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8"  x2="12" y2="16"/><line x1="8"  y1="12" x2="16" y2="12"/></svg>;
-const IconDownload = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><polyline points="8,12 12,16 16,12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>;
-const IconChevL    = () => <svg viewBox="0 0 24 24" fill="currentColor"       width="20" height="20"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>;
-const IconChevR    = () => <svg viewBox="0 0 24 24" fill="currentColor"       width="20" height="20"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>;
+const IconPlay = () => <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z" /></svg>;
+const IconSearch = () => <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg>;
+const IconBell = () => <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" /></svg>;
+const IconInfo = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>;
+const IconPlus = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></svg>;
+const IconDownload = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><circle cx="12" cy="12" r="10" /><polyline points="8,12 12,16 16,12" /><line x1="12" y1="8" x2="12" y2="16" /></svg>;
+const IconChevL = () => <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>;
+const IconChevR = () => <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>;
 
 // ─── MovieCard ────────────────────────────────────────────────────────────────
 
@@ -130,9 +130,9 @@ function MovieCard({ movie }: { movie: Movie }) {
 
 function MovieRow({ section }: { section: SliderSection }) {
   const [slide, setSlide] = useState(0);
-  const viewportRef       = useRef<HTMLDivElement>(null);
-  const VISIBLE           = 6;
-  const PAGES             = Math.ceil(section.movies.length / VISIBLE);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const VISIBLE = 6;
+  const PAGES = Math.ceil(section.movies.length / VISIBLE);
 
   const scrollToSlide = (index: number) => {
     if (!viewportRef.current) return;
@@ -194,39 +194,45 @@ function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
+
     window.addEventListener("scroll", onScroll);
+    onScroll();
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav className={`netflix-navbar${scrolled ? " scrolled" : ""}`}>
+    <nav className={`netflix-navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="netflix-row">
-        {/* Left side */}
-        <div className="left">
+        <div className="navbar-left">
           <a href="#" className="navbar-brand">
-            <img src="./images/logo.png" alt="Netflix" />
+            <img src="/images/logo.png" alt="Netflix" />
           </a>
 
-          {/* Desktop nav — hidden on mobile via CSS */}
           <div className="netflix-nav">
             {NAV_LINKS.map((link) => (
-              <button key={link}>{link}</button>
+              <button key={link} type="button">
+                {link}
+              </button>
             ))}
           </div>
 
-          {/* Mobile browse dropdown — shown on mobile via CSS */}
           <div className="netflix-dropdown-box">
             <button
+              type="button"
               className="netflix-dropdown"
               onClick={() => setMenuOpen((prev) => !prev)}
             >
               Browse ▾
             </button>
+
             {menuOpen && (
               <ul className="dropdown-menu">
                 {NAV_LINKS.map((link) => (
                   <li key={link}>
-                    <a href="#" className="dropdown-item">{link}</a>
+                    <a href="#" className="dropdown-item">
+                      {link}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -234,15 +240,33 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Right side */}
-        <div className="right">
-          <button className="nav-icon" aria-label="Search">
+        <div className="navbar-right">
+          <button type="button" className="nav-icon" aria-label="Search">
             <IconSearch />
           </button>
-          <button className="nav-icon" aria-label="Notifications">
+
+          <span className="navbar-small-text">KIDS</span>
+          <span className="navbar-small-text">DVD</span>
+
+          <button type="button" className="nav-icon" aria-label="Notifications">
             <IconBell />
           </button>
-          <div className="netflix-profile" />
+
+          <div className="profile-menu">
+            <img
+              src="/images/profile.jpg"
+              alt="Profile"
+              className="profile-avatar"
+            />
+            <span className="profile-arrow">▾</span>
+
+            <div className="profile-dropdown">
+              <p>Account</p>
+              <p>Manage Profiles</p>
+              <p>Settings</p>
+              <p>Logout</p>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -264,17 +288,31 @@ function Hero() {
 
       <div className="content">
         <section className="left">
-          <h1 className="hero-title">MONEY HEIST</h1>
+          <div className="hero-label">
+            <img src="/images/netflix-n.png" alt="Netflix N" />
+            <span>SERIES</span>
+          </div>
+
+          <h1 className="hero-title">
+            MONEY <br /> HEIST
+          </h1>
+
           <p className="hero-subtitle">PART 4</p>
 
           <div className="hero-buttons">
             <button className="btn-play">
               <IconPlay /> Play
             </button>
+
             <button className="btn-info">
               <IconInfo /> More Info
             </button>
           </div>
+
+          <p className="hero-description">
+            A criminal mastermind known as the Professor recruits eight people
+            to carry out an ambitious heist.
+          </p>
         </section>
       </div>
     </section>
