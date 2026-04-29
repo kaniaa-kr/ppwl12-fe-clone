@@ -13,9 +13,9 @@ Main Web: [kokbisa.id](https://www.kokbisa.id/)
 
 |        Name       |    NIM     | Reference Page | Spesific Component |
 |-------------------|------------|----------------|--------------------|
-| Leo Prangs Tobing | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Navbar, Header Carousel |
-| Other             | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Main |
-| Other             | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Footer |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Title Area |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Form Area |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Button Area |
+| KANIA KIRANI | H110124000 | [Home-Page](https://www.netflix.com/id-en/) | Navbar, Header, Hero, Trending Film Section |
+| KHARIZMA RIZKIAH             | H110124000 | [Home-Page](https://www.netflix.com/id-en/) | FAQ, Footer |
+| TESA FIRNA ANANTA              | H110124000 | [Media-Page](https://media.netflix.com/en/) | Footer |
+| MUHAMMAD RAFLI ASSIDIQ             | H110124000 | [Media-Page](https://media.netflix.com/en/) | Title Area |
+| EVAN MULYA OKTAROHMAT             | H110124000 | [Login-Page](https://www.netflix.com/id/login) | Login Page |
+
