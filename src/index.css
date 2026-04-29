@@ -581,4 +581,5 @@ body {
   .row-title { font-size: 16px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .netflix-navbar { padding: 0 5%; }
+  
 }
