@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
-import PageExample from './pages/PageExample';
+import Media from './pages/Media';
+import Login from './pages/Login';
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -9,9 +9,9 @@ function App() {
     <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Page1 />} />
-          <Route path="/page-2" element={<Page2 />} />
-          <Route path="/page-example" element={<PageExample />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/media" element={<Media />} />
         </Routes>
     </Router>
   );
