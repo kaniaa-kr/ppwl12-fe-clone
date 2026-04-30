@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
+<<<<<<< HEAD
+    "lucide-react": "^1.14.0",
+=======
     "autoprefixer": "^10.5.0",
     "lucide-react": "^1.11.0",
+>>>>>>> main
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.14.1",
