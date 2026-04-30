@@ -12,42 +12,34 @@ import wishes from "../../assets/if_wishes.jpg";
 const trendingShows = [
   {
     id: 1,
-    title: 'Pangku',
-    image: pangku,                  // ← use `image` for real assets
+    image: pangku,                 
   },
   {
     id: 2,
-    title: 'Mertua Ngeri Kali',
-    image: mertua,              // ← uncomment once you import it
+    image: mertua,             
   },
   {
     id: 3,
-    title: 'Pesugihan Nyi Gagak',
     image: pesugihan,
   },
   {
     id: 4,
-    title: 'Luka Makan Cinta',
     image: luka,
   },
   {
     id: 5,
-    title: 'One Piece',
     image: onePiece,
   },
   {
     id: 6,
-    title: 'Thrash',
     image: thrash,
   },
   {
     id: 7,
-    title: 'Phantom Lawyer',
     image: phantom,
   },
   {
     id: 8,
-    title: 'If Wishes Could Kill',
     image: wishes,
   },
 ];
@@ -105,11 +97,6 @@ export function TrendingSection() {
                     
                   }}
                 >
-                  {/* Title overlay since we don't have images */}
-                  <div className="absolute inset-0 flex items-center justify-center p-2 text-center text-white/80 font-bold text-sm z-0">
-                    {show.title}
-                  </div>
-
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-200 z-30" />
                 </div>
