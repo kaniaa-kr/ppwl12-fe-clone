@@ -1,54 +1,46 @@
 import { useRef, useState, useEffect } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import pangku from "../../assets/pangku.jpg";
+import mertua from "../../assets/mertua_ngeri_kali.jpg";
+import pesugihan from "../../assets/pesugihan_sate_gagak.jpg";
+import luka from "../../assets/luka_makan_cinta.jpg";
+import onePiece from "../../assets/one_piece.jpg";
+import thrash from "../../assets/thrash.jpg";
+import phantom from "../../assets/phantom_lawyer.jpg";
+import wishes from "../../assets/if_wishes.jpg";
 
 const trendingShows = [
   {
     id: 1,
-    title: 'Agak Laen',
-    bg: 'linear-gradient(135deg, #111 0%, #333 100%)',
-    hasNetflixBadge: false,
+    image: pangku,                 
   },
   {
     id: 2,
-    title: 'Mertua Ngeri Kali',
-    bg: 'linear-gradient(135deg, #1a3d00 0%, #3a6600 100%)',
-    hasNetflixBadge: true,
+    image: mertua,             
   },
   {
     id: 3,
-    title: 'Pesugihan Nyi Gagak',
-    bg: 'linear-gradient(135deg, #001a3d 0%, #003366 100%)',
-    hasNetflixBadge: false,
+    image: pesugihan,
   },
   {
     id: 4,
-    title: 'Luka Makan Cinta',
-    bg: 'linear-gradient(135deg, #1a0000 0%, #3d0011 100%)',
-    hasNetflixBadge: true,
+    image: luka,
   },
   {
     id: 5,
-    title: 'One Piece',
-    bg: 'linear-gradient(135deg, #2d1a00 0%, #5a3300 100%)',
-    hasNetflixBadge: true,
+    image: onePiece,
   },
   {
     id: 6,
-    title: 'Thrash',
-    bg: 'linear-gradient(135deg, #1a0000 0%, #660000 100%)',
-    hasNetflixBadge: true,
+    image: thrash,
   },
   {
     id: 7,
-    title: 'Show 7',
-    bg: 'linear-gradient(135deg, #00001a 0%, #000066 100%)',
-    hasNetflixBadge: true,
+    image: phantom,
   },
   {
     id: 8,
-    title: 'Show 8',
-    bg: 'linear-gradient(135deg, #1a001a 0%, #3d003d 100%)',
-    hasNetflixBadge: false,
+    image: wishes,
   },
 ];
 
@@ -101,26 +93,10 @@ export function TrendingSection() {
                   className="relative rounded overflow-hidden shadow-lg"
                   style={{
                     height: '180px',
-                    background: show.bg,
+                    backgroundImage: `url(${show.image})`,
+                    
                   }}
                 >
-                  {/* Title overlay since we don't have images */}
-                  <div className="absolute inset-0 flex items-center justify-center p-2 text-center text-white/80 font-bold text-sm z-0">
-                    {show.title}
-                  </div>
-
-                  {/* Netflix badge */}
-                  {show.hasNetflixBadge && (
-                    <div className="absolute top-2 left-2 z-20 flex items-center gap-0.5">
-                      <span
-                        className="text-[#e50914] font-black text-base leading-none"
-                        style={{ fontFamily: 'Arial Black, sans-serif' }}
-                      >
-                        N
-                      </span>
-                    </div>
-                  )}
-
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-200 z-30" />
                 </div>
