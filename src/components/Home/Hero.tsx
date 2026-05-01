@@ -1,5 +1,5 @@
-import bgNetflix from "/home/kaniaa.kr/ppwl12-fe-clone/src/assets/bg_netflix.jpg";
-import curveSvg from "/home/kaniaa.kr/ppwl12-fe-clone/src/assets/curve.svg";
+import bgNetflix from "/src/assets/bg_netflix.jpg";
+import curveSvg from "/src/assets/curve.svg";
 
 export function Hero() {
   return (
