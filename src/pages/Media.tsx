@@ -66,7 +66,8 @@ const latestNews = [
 ];
 
 export default function MediaPage() {
-  const [selectedMonth, setSelectedMonth] = useState("April");
+  const selectedMonth = "April";
+  // const [selectedMonth, setSelectedMonth] = useState("April");
   const [showAllTitles, setShowAllTitles] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
