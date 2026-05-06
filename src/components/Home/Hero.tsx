@@ -1,13 +1,10 @@
-import bgNetflix from "/src/assets/bg_netflix.jpg";
-import curveSvg from "/src/assets/curve.svg";
-
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden bg-black">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgNetflix})` }}
+        style={{ backgroundImage: `url("/assets/bg_netflix.jpg")` }}
       />
 
       {/* Dark overlay */}
@@ -41,7 +38,7 @@ export function Hero() {
       </div>
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <img
-          src={curveSvg}
+          src="/assets/curve.svg"
           alt=""
           style={{
             display: "block",

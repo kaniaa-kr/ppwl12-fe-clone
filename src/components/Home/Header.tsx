@@ -18,7 +18,7 @@ export function Header() {
         <div className="relative group">
           <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
             <img 
-                src="/lang-translate.svg" 
+                src="/assets/lang-translate.svg" 
                 alt="Translate" 
                 className="w-4 h-4 object-contain" 
               />
